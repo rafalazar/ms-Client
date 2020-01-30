@@ -18,4 +18,7 @@ public interface ClientService {
 	//Eliminar
 	public Mono<Void> delete(Client c);
 	
+	//Actualizar banco - experimental
+	public Mono<Client> updateBank(String bank, String id);
+	
 }
