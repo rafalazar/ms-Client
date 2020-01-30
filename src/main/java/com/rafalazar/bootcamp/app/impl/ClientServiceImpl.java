@@ -98,4 +98,19 @@ public class ClientServiceImpl implements ClientService {
 		return repo.delete(c);
 	}
 
+	@Override
+	public Mono<Client> updateBank(String bank, String id) {
+	
+		return repo.findById(id)
+				.flatMap(c -> {
+					if(c.getBank() == null) {
+						c.setBank(c.getBank());
+					}else {
+						c.setBank(bank);
+					}
+					
+					return repo.save(c);
+				});
+	}
+
 }

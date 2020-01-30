@@ -67,5 +67,14 @@ public class ClientController {
 				}).defaultIfEmpty(new ResponseEntity<Void>(HttpStatus.NOT_FOUND));
 	}
 	
+	//ACTUALIZAR EL BANCO
+	@PutMapping("/updateBank/{id}")
+	public Mono<ResponseEntity<Client>> updateBank(@PathVariable("id") String id, @RequestBody Client cl){
+		return service.updateBank(cl.getBank(), id)
+				.map(c -> ResponseEntity.created(URI.create("/clients".concat(c.getId())))
+						.contentType(MediaType.APPLICATION_JSON).body(c))
+				.defaultIfEmpty(ResponseEntity.notFound().build());
+	}
+	
 
 }
