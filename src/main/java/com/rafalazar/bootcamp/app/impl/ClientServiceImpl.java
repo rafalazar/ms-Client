@@ -99,7 +99,7 @@ public class ClientServiceImpl implements ClientService {
 	}
 
 	@Override
-	public Mono<Client> updateBank(String bank, String id) {
+	public Mono<Client> updateBankById(String bank, String id) {
 	
 		return repo.findById(id)
 				.flatMap(c -> {

@@ -69,8 +69,8 @@ public class ClientController {
 	
 	//ACTUALIZAR EL BANCO
 	@PutMapping("/updateBank/{id}")
-	public Mono<ResponseEntity<Client>> updateBank(@PathVariable("id") String id, @RequestBody Client cl){
-		return service.updateBank(cl.getBank(), id)
+	public Mono<ResponseEntity<Client>> updateBankById(@PathVariable("id") String id, @RequestBody Client cl){
+		return service.updateBankById(cl.getBank(), id)
 				.map(c -> ResponseEntity.created(URI.create("/clients".concat(c.getId())))
 						.contentType(MediaType.APPLICATION_JSON).body(c))
 				.defaultIfEmpty(ResponseEntity.notFound().build());
