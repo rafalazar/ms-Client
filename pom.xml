@@ -60,6 +60,13 @@
 			<artifactId>reactor-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!-- Dependencia para las pruebas unitarias -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!-- Dependencia para las pruebas unitarias FIN-->
 		
 		<!-- Dependencias nuevas -->
 		<dependency>
