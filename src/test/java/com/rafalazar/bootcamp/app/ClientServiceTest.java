@@ -1,5 +1,6 @@
 package com.rafalazar.bootcamp.app;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.assertj.core.api.Assertions;
@@ -41,6 +42,16 @@ class ClientServiceTest {
 			
 			Assertions.assertThat(clients.size()>0).isTrue();
 		});
+	}
+	
+	@Test
+	void findByIdClient() {
+		Client cli = service.findById("5e32e702f2b47b5a07945f5e").block();
+		client.get().uri("/clients/findById/{id}",Collections.singletonMap("id", cli.getId()))
+		.accept(MediaType.APPLICATION_JSON)
+		.exchange()
+		.expectStatus().isOk()
+		.expectHeader().contentType(MediaType.APPLICATION_JSON);
 	}
 
 }
